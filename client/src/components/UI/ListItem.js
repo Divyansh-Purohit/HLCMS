@@ -9,7 +9,6 @@ const ListItem = (props) => {
   const deleteItemHandler = () => {
     props.onDelete(props.id);
   };
-
   const appliedClasses =
     props.x === "complain"
       ? `${classes.deleteBoxx}`

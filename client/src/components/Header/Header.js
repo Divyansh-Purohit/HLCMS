@@ -30,9 +30,7 @@ const Header = () => {
     <Fragment>
       <div className={classes.header}>
         <section className={classes.s1}>
-          <h1 className={classes.title}>
-            Halwara AFS Online Management System
-          </h1>
+          <h1 className={classes.title}>Halwara AFS Online Portal</h1>
         </section>
         <section className={classes.s2}>
           {!isLoggedIn && (

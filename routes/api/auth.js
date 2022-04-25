@@ -6,7 +6,17 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 const User = require("../../models/User");
 const jwtVerification = require("../../middleware/auth.js");
+const nodemailer = require("nodemailer");
+const sendGridTransport = require("nodemailer-sendgrid-transport");
 const router = express.Router();
+
+const transporter = nodemailer.createTransport(
+  sendGridTransport({
+    auth: {
+      api_key: config.get("NODEMAILER_SG_KEY"),
+    },
+  })
+);
 
 router.get("/", jwtVerification, async (req, res) => {
   try {
@@ -57,7 +67,6 @@ router.post(
           expiresIn: 3600000,
         },
         (err, token) => {
-          // console.log(`${email} logged in successfully`);
           if (err) throw err;
           return res.json({ token, user });
         }
@@ -136,7 +145,13 @@ router.post(
 
       await user.save();
 
-      // console.log(`New User Created with email ${user.email}`);
+      transporter.sendMail({
+        to: `${user.email}`,
+        from: config.get("admin_email"),
+        subject: "Signup successful!",
+        html: "<h1>Account Created</h1><p>Thankyou for signing in to the Halwara afs online portal.</p>",
+      });
+
       const payload = {
         user: {
           id: user.id,
@@ -160,8 +175,4 @@ router.post(
   }
 );
 
-// router.get("/api/user/logout", (req, res) => {
-//   console.log(req.body.user);
-//   res.status(200).json({ msg: "User logged out succefully" });
-// });
 module.exports = router;

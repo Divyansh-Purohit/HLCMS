@@ -9,6 +9,17 @@ const Events = require("../../models/Events");
 const Complains = require("../../models/Complains");
 const Issues = require("../../models/Issues");
 const Gallery = require("../../models/Gallery");
+const nodemailer = require("nodemailer");
+const sendGridTransport = require("nodemailer-sendgrid-transport");
+const config = require("config");
+
+const transporter = nodemailer.createTransport(
+  sendGridTransport({
+    auth: {
+      api_key: config.get("NODEMAILER_SG_KEY"),
+    },
+  })
+);
 
 router.get("/home", jwtVerification, async (req, res) => {
   try {
@@ -114,9 +125,13 @@ router.post(
       const salt_password = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt_password);
       await user.save();
-      console.log(
-        `User profile with email: ${user.email} updated successfully`
-      );
+
+      transporter.sendMail({
+        to: `${user.email}`,
+        from: config.get("admin_email"),
+        subject: "Profile updated successful!",
+        html: "<p>Your profile was updated successfully, use the updated credentials to login into the portal next time onwards.</p>",
+      });
       return res.status(200).json({ user });
     } catch (e) {
       res.response.status(500).send("Internal Server Error");
@@ -132,6 +147,12 @@ router.delete(
       // await User.findByIdAndRemove({ _id: req.user.id });
       const user = await User.findOne({ _id: req.params.profileid });
       await user.remove();
+      transporter.sendMail({
+        to: `${user.email}`,
+        from: config.get("admin_email"),
+        subject: "Profile deleted successful!",
+        html: "<p>Your profile was deleted successfully.</p>",
+      });
       return res
         .status(200)
         .json({ msg: "Your profile has been successfully deleted" });
@@ -178,7 +199,6 @@ router.post("/events/add-a-new-event", jwtVerification, async (req, res) => {
       avatar: 1,
     });
     const { scheduledfor, type, description } = req.body;
-    console.log(scheduledfor);
     const newevent = new Events({
       user: req.user.id,
       username: user.username,
@@ -189,7 +209,22 @@ router.post("/events/add-a-new-event", jwtVerification, async (req, res) => {
       description: description,
     });
     await newevent.save();
-    // console.log(`${user.username} added a new event`);
+
+    const userEmails = await User.find({}).select({
+      _id: 0,
+      email: 1,
+    });
+
+    const emails = userEmails.map((email) => email.email);
+
+    emails.forEach((email) => {
+      transporter.sendMail({
+        to: email,
+        from: config.get("admin_email"),
+        subject: "New event added!",
+        html: `<p>${user.username} added a new event. Visit the online portal to view this event.</p>`,
+      });
+    });
     const updatedevents = await Events.find().sort({ date: -1 });
     res.return.status(200).json({ updatedevents });
   } catch (e) {
@@ -266,7 +301,22 @@ router.post(
         description: description,
       });
       await newannouncement.save();
-      // console.log(`${user.username} posted a new announcement`);
+      const userEmails = await User.find({}).select({
+        _id: 0,
+        email: 1,
+      });
+
+      const emails = userEmails.map((email) => email.email);
+
+      emails.forEach((email) => {
+        transporter.sendMail({
+          to: email,
+          from: config.get("admin_email"),
+          subject: "New announcement posted!",
+          html: `<p>${user.username} added a new announcement. Visit the online portal to view this announcement.</p>`,
+        });
+      });
+
       user.countannouncements++;
       await user.save();
       const updatedannouncements = await Announcements.find().sort({
@@ -350,7 +400,8 @@ router.post("/issues/raise-a-new-issue", jwtVerification, async (req, res) => {
       newissue = new Issues({
         user: req.user.id,
         username: "Anonymous user",
-        avatar: user.avatar,
+        avatar:
+          "https://www.gravatar.com/avatar/961a25f3e0a318af063abfea68fb286b?s=200&r=pg&d=mm",
         subject: subject,
         description: description,
       });
@@ -364,6 +415,23 @@ router.post("/issues/raise-a-new-issue", jwtVerification, async (req, res) => {
       });
     }
     await newissue.save();
+
+    const userEmails = await User.find({}).select({
+      _id: 0,
+      email: 1,
+    });
+
+    const emails = userEmails.map((email) => email.email);
+
+    emails.forEach((email) => {
+      transporter.sendMail({
+        to: email,
+        from: config.get("admin_email"),
+        subject: "New issue raised!",
+        html: `<p>${newissue.username} raised a new issue. Visit the online portal to view this issue.</p>`,
+      });
+    });
+
     user.countissues++;
     await user.save();
     const updatedissues = await Issues.find().sort({ date: -1 });
@@ -420,6 +488,7 @@ router.post(
         _id: 1,
         username: 1,
         avatar: 1,
+        email: 1,
       });
       const { type, description, house_num } = req.body;
       const newcomplain = new Complains({
@@ -431,6 +500,21 @@ router.post(
         description: description,
       });
       await newcomplain.save();
+
+      transporter.sendMail({
+        to: `${user.email}`,
+        from: config.get("admin_email"),
+        subject: "New complained filed!",
+        html: `<p>Your complain was registered successfully.</p>`,
+      });
+
+      transporter.sendMail({
+        to: config.get("admin_email"),
+        from: config.get("admin_email"),
+        subject: "New complained filed!",
+        html: `<p>${user.username} (${user.house_num}) filed a new complain.</p>`,
+      });
+
       user.countcomplains++;
       await user.save();
       const updatedcomplains = await Complains.find({
