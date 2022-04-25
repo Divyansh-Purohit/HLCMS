@@ -1,0 +1,70 @@
+.indv_complain {
+  background-color: skyblue;
+  width: 95%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  padding: 10px auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.header {
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.header > p > span {
+  color: white;
+}
+
+span {
+  color: yellow;
+}
+
+p {
+  font-family: Roboto;
+}
+
+.type {
+  font-family: Roboto;
+  font-size: 22px;
+}
+.date {
+  width: 400px;
+  text-align: left;
+  font-family: Roboto;
+  font-size: 22px;
+}
+
+.description {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  padding-left: 5px;
+  font-family: Roboto;
+  font-size: 18px;
+}
+
+.details {
+  width: 90%;
+}
+.controls {
+  width: 10%;
+}
+
+.deletebtn {
+  margin: 10px auto;
+  height: 60px;
+  color: skyblue;
+  background-color: #fff;
+  border: 1px solid black;
+}
+
+.deletebtn:hover {
+  background-color: skyblue;
+  color: black;
+  cursor: pointer;
+}

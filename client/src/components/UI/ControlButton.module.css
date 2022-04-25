@@ -1,0 +1,33 @@
+.addNew {
+  background-color: white;
+  border: 1px solid black;
+  width: 50%;
+  height: 10vh;
+  border-radius: 5px;
+  position: fixed;
+  top: 110px;
+  left: 390px;
+}
+
+.addNew:hover {
+  background-color: skyblue;
+  cursor: pointer;
+}
+.addNew:hover > p {
+  color: black;
+}
+
+.control {
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+  font-size: 24px;
+  font-family: Roboto;
+  color: skyblue;
+}
+
+.info {
+  text-align: center;
+  font-size: 16px;
+  color: black;
+}

@@ -1,0 +1,210 @@
+hr {
+  color: white;
+}
+.displayBox {
+  width: 90%;
+  height: 500px;
+  position: fixed;
+  top: 200px;
+  left: 5%;
+  border: 1px solid black;
+  border-radius: 5px;
+  /* overflow-y: scroll; */
+}
+
+.header {
+  background-color: skyblue;
+  height: 6vh;
+  width: 90%;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 1000;
+  border-bottom: 1px solid black;
+}
+.header > p {
+  text-align: center;
+  margin-top: 5px;
+  color: white;
+  font-family: Roboto;
+  font-size: 28px;
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.mainContent {
+  margin-top: 10px;
+  overflow-y: scroll;
+  width: 100%;
+  /* height: 450px; */
+  height: 440px;
+  position: relative;
+  top: 40px;
+}
+
+.errorBox {
+  width: 20%;
+  height: 3vh;
+  border: 1px solid white;
+  box-shadow: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: lightcoral;
+}
+
+.itemBox {
+  margin: 20px auto 0px auto;
+  width: 80%;
+  padding: 10px;
+  background-color: skyblue;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.headerBox {
+  width: 100%;
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.userDataBox {
+  display: flex;
+  align-items: center;
+  width: 300px;
+}
+.postedOn {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+  align-items: center;
+  width: 250px;
+}
+
+.postedOn > p {
+  font-size: 18px;
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.postedOnContent {
+  background-color: white;
+  width: 130px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.postedOnContent > p {
+  text-align: center;
+  font-size: 18px;
+  color: skyblue;
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
+  color: skyblue;
+}
+
+.avatarBox {
+  margin-right: 10px;
+}
+
+.usernameBox > p {
+  font-size: 18px;
+  margin-left: 20px;
+  color: black;
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.mainContentBox {
+  padding-bottom: 5px;
+  /* height: 130px; */
+}
+
+.infoContainer {
+  display: inline-block;
+  padding: 2px;
+}
+.scheduledOnBox,
+.subject {
+  width: 300px;
+  margin-top: 10px;
+}
+
+.scheduledOnBox,
+.subject > p {
+  font-size: 18px;
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+.descriptionContainer {
+  position: relative;
+  /* bottom: 100px; */
+  right: 5px;
+}
+.description {
+  position: relative;
+  left: 510px;
+  color: White;
+  font-size: 18px;
+  display: inline-block;
+  width: 100px;
+}
+.descriptionBox {
+  margin-top: 5px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+.descriptionBox > p {
+  margin: 0;
+  padding: 0;
+}
+
+.deleteBox {
+  margin-top: 20px;
+  width: 130px;
+  position: relative;
+  left: 951px;
+  bottom: 100px;
+}
+.deleteBoxx {
+  margin-top: 20px;
+  width: 130px;
+  position: relative;
+  left: 951px;
+  bottom: 50px;
+}
+
+.deleteBoxxx {
+  margin-top: 20px;
+  width: 130px;
+  position: relative;
+  left: 951px;
+  bottom: 30px;
+}
+
+.btn {
+  width: 130px;
+  color: skyblue;
+  background-color: white;
+  border: 1px solid black;
+  padding: 2px;
+  font-family: Roboto;
+}
+
+.btn:hover {
+  background-color: skyblue;
+  color: black;
+  cursor: pointer;
+}

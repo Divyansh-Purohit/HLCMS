@@ -1,0 +1,144 @@
+.loginForm {
+  position: absolute;
+  top: 150px;
+  left: 400px;
+  background-color: white;
+  border: 2px solid skyblue;
+  border-radius: 5px;
+  height: 300px;
+  width: 50%;
+  box-shadow: 30px;
+  padding: 0;
+  /* text-align: center; */
+}
+.header {
+  margin: 0;
+  background-color: skyblue;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header > p {
+  margin: 0;
+  color: white;
+  font-family: Roboto;
+  font-size: 24px;
+}
+
+.mainContent {
+  margin: 25px auto;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 40px;
+  padding: 0;
+  width: 100%;
+  height: 70px;
+}
+
+.fieldsContainer {
+  height: 70px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+.fields {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+.l {
+  position: relative;
+  right: 10px;
+}
+
+.loginFormLabels {
+  width: 80px;
+  float: left;
+}
+.fields > input {
+  height: 24px;
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  position: absolute;
+  width: 80%;
+  top: 230px;
+  left: 75px;
+  justify-content: space-evenly;
+}
+
+.footer > p > span {
+  color: skyblue;
+}
+
+.footer > p:hover {
+  cursor: pointer;
+}
+
+.loginButton {
+  margin: 5px auto 10px auto;
+  color: black;
+  height: 25px;
+  width: 70px;
+  padding: 5px;
+  background-color: white;
+  border: 2px solid skyblue;
+  position: absolute;
+  /* top: 10px; */
+  left: 350px;
+}
+
+.loginButton:hover {
+  cursor: pointer;
+  background-color: skyblue;
+  color: black;
+}
+
+.footer > Link > p {
+  list-style: none;
+  text-decoration: none;
+}
+
+.invalid {
+  margin-top: 5px;
+  display: block;
+  background-color: lightcoral;
+  position: relative;
+  width: 80%;
+  left: 150px;
+  width: 170px;
+  border-radius: 5px;
+  padding: 2px 0;
+}
+
+.invalid > p {
+  margin: 0;
+  padding: 0 2px;
+  font-size: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.errmsg {
+  text-align: center;
+  position: absolute;
+  display: block;
+  width: 238px;
+  top: 90px;
+  left: 670px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: lightcoral;
+}
+
+.emailerr > invalid {
+  position: relative;
+  right: 100px;
+}

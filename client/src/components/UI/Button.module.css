@@ -1,0 +1,8 @@
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: black;
+  cursor: not-allowed;
+}

@@ -1,0 +1,19 @@
+.fieldContent > p {
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.fieldContent > p:hover {
+  color: yellow;
+  cursor: pointer;
+}
+
+.active {
+  color: yellow;
+}
+
+.navlink {
+  text-decoration: none;
+  /* color: white; */
+}

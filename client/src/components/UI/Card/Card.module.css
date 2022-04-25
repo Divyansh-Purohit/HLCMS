@@ -1,0 +1,19 @@
+.empty {
+  background-color: skyblue;
+  border: 1px solid black;
+  width: 50%;
+  height: 6vh;
+  border-radius: 5px;
+  position: relative;
+  top: 20px;
+  left: 350px;
+}
+
+.empty > p {
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+  font-size: 24px;
+  font-family: Roboto;
+  color: white;
+}

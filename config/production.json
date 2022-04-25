@@ -1,0 +1,4 @@
+{
+  "mongodburi": "mongodb+srv://divyanshpurohit:Divyansh%402000@hlwra-cms.cuwac.mongodb.net/hlwra-cms?retryWrites=true&w=majority",
+  "jwtSecret": "mySecretToken"
+}

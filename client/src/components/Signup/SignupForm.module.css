@@ -1,0 +1,122 @@
+.signupForm {
+  position: absolute;
+  top: 150px;
+  left: 300px;
+  background-color: white;
+  border: 2px solid skyblue;
+  border-radius: 5px;
+  height: 60%;
+  width: 60%;
+}
+.header {
+  margin: 0;
+  background-color: skyblue;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header > p {
+  margin: 0;
+  color: white;
+  font-family: Roboto;
+  font-size: 24px;
+}
+
+.mainContent {
+  margin: 15px 20px;
+  height: 250px;
+}
+
+.f2 {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 25px;
+}
+.fieldsContainer {
+  height: 50px;
+}
+.fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  margin-left: 0px;
+}
+
+.f2r {
+  margin-left: 35px;
+}
+
+.fields > label {
+  font-size: 18px;
+}
+.fields > input {
+  margin-left: 25px;
+  height: 24px;
+  margin: 0;
+}
+
+.footer {
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 400px;
+  top: 380px;
+}
+
+.footer > p > span {
+  color: skyblue;
+}
+
+.footer > p:hover {
+  cursor: pointer;
+}
+
+.signupButton {
+  margin: 10px auto;
+  color: black;
+  height: 25px;
+  width: 70px;
+  padding: 5px;
+  background-color: white;
+  border: 2px solid skyblue;
+  position: absolute;
+  left: 440px;
+  bottom: 80px;
+}
+
+.signupButton:hover {
+  cursor: pointer;
+  background-color: skyblue;
+  color: black;
+}
+
+.invalid {
+  margin-top: 5px;
+  display: block;
+  background-color: lightcoral;
+  position: relative;
+  width: 170px;
+  left: 130px;
+  border-radius: 5px;
+}
+
+.invalid > p {
+  margin: 0;
+  padding: 0 2px;
+  font-size: 10px;
+}
+
+.right > .invalid {
+  position: relative;
+  left: 166px;
+}
+.errmsg {
+  position: absolute;
+  top: 100px;
+  left: 670px;
+  background-color: lightcoral;
+}

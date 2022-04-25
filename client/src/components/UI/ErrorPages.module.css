@@ -1,0 +1,9 @@
+.box {
+  position: absolute;
+  width: 50%;
+  top: 200px;
+  left: 350px;
+  border: 1px solid skyblue;
+  border-radius: 5px;
+  padding: 20px;
+}
