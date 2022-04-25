@@ -12,7 +12,7 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/user", require("./routes/api/user"));
 
 if (process.env.NODE_ENV === "production") {
-  express.static(path.join("client", "build"));
+  app.use("/static", express.static(path.join(__dirname, "client", "build")));
 }
 
 app.get("*", (req, res) => {
