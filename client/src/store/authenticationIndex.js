@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   token: localStorage.getItem("token"),
   user: null,
-  isAuthenticated: false,
+  isAuthenticated: localStorage.getItem("token"),
+  isComplainsManager: false,
 };
 
 const authSlice = createSlice({
@@ -14,6 +15,8 @@ const authSlice = createSlice({
       const token = payload.payload.token;
       state.token = token;
       state.user = payload.payload.user;
+      state.isComplainsManager =
+        payload.payload.user.email === "admin@google.com";
       state.isAuthenticated = true;
       localStorage.setItem("token", token);
       localStorage.setItem("userid", payload.payload.user._id);
@@ -24,6 +27,7 @@ const authSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
       localStorage.clear();
+      state.isComplainsManager = false;
     },
     updateProfile(state, payload) {
       localStorage.setItem("house_num", payload.payload);

@@ -10,7 +10,7 @@ const UserHomePage = () => {
   const [countAnnouncements, setCountAnnouncements] = useState(0);
   const [countEvents, setCountEvents] = useState(0);
   const [countIssues, setCountIssues] = useState(0);
-  const [countUploads, setCountUploads] = useState(0);
+  const [countComplains, setCountComplains] = useState(0);
   const [loading, setLoading] = useState(null);
   useEffect(() => {
     async function fetchdata() {
@@ -18,12 +18,12 @@ const UserHomePage = () => {
       try {
         const response = await axios.get("/api/user/home");
         setLoading(false);
-        const { countannouncements, countevents, countissues, countuploads } =
+        const { countannouncements, countevents, countissues, countComplains } =
           response.data;
         setUsername(response.data.user.username);
         setCountAnnouncements(countannouncements);
         setCountEvents(countevents);
-        setCountUploads(countuploads);
+        setCountComplains(countComplains);
         setCountIssues(countissues);
       } catch (err) {
         console.log(err);
@@ -45,8 +45,8 @@ const UserHomePage = () => {
   const myEventsHandler = () => {
     history.push("/api/user/myEvents");
   };
-  const myUploadsHandler = () => {
-    history.push("/api/user/myUploads");
+  const myComplainsHandler = () => {
+    history.push("/api/user/complains");
   };
   const myIssuesHandler = () => {
     history.push("/api/user/myIssues");
@@ -68,28 +68,28 @@ const UserHomePage = () => {
                 className={classes.mainContent}
                 onClick={myAnnouncementsHandler}
               >
-                <p>Click to see all past announcements made by you.</p>
+                <p>Click to see all announcements made by you.</p>
               </div>
             </div>
             <div className={classes.my_}>
               <p className={classes.title}>My Events</p>
               <CountBox data={countEvents} />
               <div className={classes.mainContent} onClick={myEventsHandler}>
-                <p>Click to see events all past events hosted by you.</p>
-              </div>
-            </div>
-            <div className={classes.my_}>
-              <p className={classes.title}>My Uploads</p>
-              <CountBox data={countUploads} />
-              <div className={classes.mainContent} onClick={myUploadsHandler}>
-                <p>Click to see all past images and videos uploaded by you.</p>
+                <p>Click to see events all events hosted by you.</p>
               </div>
             </div>
             <div className={classes.my_}>
               <p className={classes.title}>My Issues</p>
               <CountBox data={countIssues} />
               <div className={classes.mainContent} onClick={myIssuesHandler}>
-                <p>Click to see all past issues raised by you.</p>
+                <p>Click to see all issues raised by you.</p>
+              </div>
+            </div>
+            <div className={classes.my_}>
+              <p className={classes.title}>My Complains</p>
+              <CountBox data={countComplains} />
+              <div className={classes.mainContent} onClick={myComplainsHandler}>
+                <p>Click to see all complains filed by you.</p>
               </div>
             </div>
           </div>

@@ -1,0 +1,57 @@
+/* .addNewAnnouncementContainer {
+  background-color: white;
+  border: 1px solid black;
+  width: 50%;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  position: relative;
+  top: 150px;
+  left: 350px;
+}
+
+.header {
+  margin: 0;
+  background-color: skyblue;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header > p {
+  margin: 0;
+  color: white;
+  font-family: Roboto;
+  font-size: 24px;
+}
+.mainContent {
+  margin: 20px;
+}
+.fields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.subject {
+  width: 530px;
+}
+
+.btn {
+  background-color: white;
+  border: 1px solid black;
+  color: skyblue;
+  padding: 5px;
+  position: relative;
+  left: 310px;
+}
+
+.btn:hover {
+  background-color: skyblue;
+  color: black;
+  cursor: pointer;
+}
+
+.footer > p {
+  text-align: center;
+} */

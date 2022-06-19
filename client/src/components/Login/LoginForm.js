@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
-import { useState, Fragment, useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useState, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Button from "../UI/Button";
 import classes from "./LoginForm.module.css";
@@ -58,12 +58,15 @@ const LoginForm = () => {
         setLoading(false);
         const payload = response.data;
         dispatch(AuthActions.login(payload));
-        history.replace("/api/user/home");
+        if (email !== "admin@google.com") {
+          history.replace("/api/user/home");
+        } else {
+          history.replace("/api/complainmanager/view complains");
+        }
       } catch (e) {
         setLoading(false);
         console.log(e);
         const errors = e.response.data.errors;
-        console.log(e);
         if (errors) {
           setLoginErrorMsg(errors[0].msg);
           setTimeout(() => {

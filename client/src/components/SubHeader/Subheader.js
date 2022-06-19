@@ -23,11 +23,11 @@ const Subheader = () => {
       name: "Events",
       path: "/api/user/events",
     },
-    {
-      id: 5,
-      name: "Gallery",
-      path: "/api/user/gallery",
-    },
+    // {
+    //   id: 5,
+    //   name: "Gallery",
+    //   path: "/api/user/uploads",
+    // },
     {
       id: 6,
       name: "Campus Issues",
@@ -39,19 +39,11 @@ const Subheader = () => {
       path: "/api/user/complains",
     },
   ];
-  const fieldChangeHandler = (fieldName) => {};
   return (
     <Fragment>
       <div className={classes.topbar}>
         {fields.map((field) => {
-          return (
-            <Field
-              name={field.name}
-              key={field.id}
-              path={field.path}
-              onClick={fieldChangeHandler.bind({ field })}
-            />
-          );
+          return <Field name={field.name} key={field.id} path={field.path} />;
         })}
       </div>
     </Fragment>

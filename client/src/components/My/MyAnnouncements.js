@@ -80,7 +80,7 @@ const MyAnnouncements = () => {
             <p>My Announcements Page</p>
           </div>
           <div className={classes.newAnnbtn}>
-            <p onClick={newAnnouncementCreator}>Post an announcement</p>
+            <p onClick={newAnnouncementCreator}>Post an Announcement</p>
           </div>
           <DisplayBox
             heading={"All announcements posted by you will appear here"}

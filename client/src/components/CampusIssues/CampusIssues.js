@@ -16,13 +16,12 @@ const CampusIssues = () => {
     async function fetchData() {
       setLoading(true);
       try {
-        const data = await axios.get("/api/user/issues");
+        const response = await axios.get("/api/user/issues");
         setLoading(false);
-        if (data.data.msg) {
+        if (response.data.msg) {
           dispatch(ActionActions.setIssues([]));
         } else {
-          const issueList = data.data.issues;
-          dispatch(ActionActions.setIssues(issueList));
+          dispatch(ActionActions.setIssues(response.data.issues));
         }
       } catch (e) {
         setLoading(false);
@@ -80,7 +79,7 @@ const CampusIssues = () => {
           <Route path="/api/user/campus issues" exact>
             <ControlButton
               onClick={addIssueHandler}
-              heading={"Raise a new campus issue"}
+              heading={"Raise a new Issue"}
               info={"This issue will be visible to other users"}
             />
             <DisplayBox

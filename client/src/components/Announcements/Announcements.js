@@ -82,7 +82,7 @@ const Announcements = () => {
           <Route path="/api/user/announcements" exact>
             <ControlButton
               onClick={addAnnouncementHandler}
-              heading={"Post a new Announcment"}
+              heading={"Post a new announcment"}
               info={"This announcement will be visible to other users"}
             />
             <DisplayBox

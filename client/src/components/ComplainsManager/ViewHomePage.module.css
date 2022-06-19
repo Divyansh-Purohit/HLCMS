@@ -1,0 +1,65 @@
+.subheader {
+  position: absolute;
+  top: 3.5rem;
+  width: 100%;
+  height: 6vh;
+  background-color: skyblue;
+  border-top: 1px solid white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.subheader > p {
+  margin: 0;
+  width: 200px;
+  color: white;
+  font-family: Roboto;
+  font-size: 18px;
+}
+
+.li {
+  text-decoration: none;
+}
+
+.active {
+  color: yellow;
+}
+
+.mainContent {
+  background-color: white;
+  position: fixed;
+  top: 100px;
+  width: 100%;
+  height: 100%;
+}
+
+.subheading {
+  position: fixed;
+  top: 110px;
+  left: 35px;
+  background-color: skyblue;
+  width: 95%;
+  /* height: 3.5rem; */
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.subheading > p {
+  font-size: 28px;
+  font-family: Roboto;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.list {
+  position: fixed;
+  top: 170px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  overflow-y: scroll;
+  padding-bottom: 10px;
+}
