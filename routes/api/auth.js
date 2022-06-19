@@ -35,12 +35,14 @@ router.post(
     check("password").not().isEmpty().withMessage("Provide a password"),
   ],
   async (req, res) => {
+    const complain_manager_email = config.get("complain_manager_email");
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     try {
       const { email, password } = req.body;
+      const isCM = complain_manager_email === email ? true : false;
       let user = await User.findOne({ email });
 
       if (!user) {
@@ -68,7 +70,8 @@ router.post(
         },
         (err, token) => {
           if (err) throw err;
-          return res.json({ token, user });
+          console.log(isCM);
+          return res.json({ token, user, isCM });
         }
       );
     } catch (err) {

@@ -33,7 +33,7 @@ router.get("/home", jwtVerification, async (req, res) => {
     const myevents = await Events.find({
       user: req.user.id,
     }).countDocuments();
-    const myuploads = await Gallery.find({
+    const mycomplains = await Complains.find({
       user: req.user.id,
     }).countDocuments();
     res.status(200).json({
@@ -41,7 +41,7 @@ router.get("/home", jwtVerification, async (req, res) => {
       countannouncements: myannouncements,
       countevents: myevents,
       countissues: myissues,
-      countuploads: myuploads,
+      countcomplains: mycomplains,
     });
   } catch (e) {
     console.log(e.message);
@@ -358,6 +358,20 @@ router.post(
     }
   }
 );
+
+// UPLOAD ROUTES
+router.get("/uploads", jwtVerification, async (req, res) => {
+  try {
+    const issues = await Issues.find().sort({ date: -1 });
+    if (issues.length === 0) {
+      return res.status(200).json({ msg: "No issues to show" });
+    } else {
+      return res.status(200).json({ issues });
+    }
+  } catch (e) {
+    return res.status(500).send("Internal Server Error");
+  }
+});
 // ISSUES ROUTES
 router.get("/issues", jwtVerification, async (req, res) => {
   try {
@@ -400,8 +414,7 @@ router.post("/issues/raise-a-new-issue", jwtVerification, async (req, res) => {
       newissue = new Issues({
         user: req.user.id,
         username: "Anonymous user",
-        avatar:
-          "https://www.gravatar.com/avatar/961a25f3e0a318af063abfea68fb286b?s=200&r=pg&d=mm",
+        avatar: "",
         subject: subject,
         description: description,
       });
@@ -464,7 +477,10 @@ router.post("/issues/delete-an-issue/", jwtVerification, async (req, res) => {
 // COMPLAINS ROUTES
 router.get("/mycomplains", jwtVerification, async (req, res) => {
   try {
-    const mycomplains = await Complains.find({ user: req.user.id }).sort({
+    const mycomplains = await Complains.find({
+      user: req.user.id,
+      resolved_by_user: false,
+    }).sort({
       date: -1,
     });
     if (mycomplains.length === 0) {
@@ -503,7 +519,7 @@ router.post(
 
       transporter.sendMail({
         to: `${user.email}`,
-        from: config.get("admin_email"),
+        from: config.get("complain_manager_email"),
         subject: "New complained filed!",
         html: `<p>Your complain was registered successfully.</p>`,
       });
@@ -527,6 +543,36 @@ router.post(
   }
 );
 
+// router.post(
+//   "/mycomplains/delete-a-complain",
+//   jwtVerification,
+//   async (req, res) => {
+//     try {
+//       const complain = await Complains.findOne({ _id: req.body.id });
+//       if (complain.user.toString() !== req.user.id) {
+//         return res
+//           .status(401)
+//           .json({ msg: "You cannot delete a complain filed by other users." });
+//       }
+//       await complain.remove();
+//       const updatedcomplains = await Complains.find({ user: req.user.id }).sort(
+//         {
+//           date: -1,
+//         }
+//       );
+//       if (updatedcomplains.length === 0) {
+//         return res
+//           .status(200)
+//           .json({ msg: "You haven't filed any complain yet" });
+//       } else {
+//         return res.status(200).json({ updatedcomplains });
+//       }
+//     } catch (e) {
+//       return res.status(500).send("Internal Server Error");
+//     }
+//   }
+// );
+
 router.post(
   "/mycomplains/delete-a-complain",
   jwtVerification,
@@ -538,7 +584,9 @@ router.post(
           .status(401)
           .json({ msg: "You cannot delete a complain filed by other users." });
       }
-      await complain.remove();
+      // await complain.remove();
+      complain.resolved_by_user = true;
+      complain.save();
       const updatedcomplains = await Complains.find({ user: req.user.id }).sort(
         {
           date: -1,
@@ -556,6 +604,37 @@ router.post(
     }
   }
 );
+
+// router.get("/complainsmanager/complains", jwtVerification, async (req, res) => {
+//   if (req.body.email !== config.get("complain_manager_email")) {
+//     return res.status(401).send("Authorization Denied");
+//   } else {
+//     try {
+//       const complains = await Complains.find().sort({
+//         date: -1,
+//       });
+//       if (complains.length === 0) {
+//         return res.status(200).json({ msg: "No complains to show" });
+//       } else {
+//         return res.status(200).json({ complains });
+//       }
+//     } catch (e) {
+//       return res.status(500).send("Internal Server Error");
+//     }
+//   }
+// });
+
+// router.post(
+//   "/api/complainsmanager/updatecomplains",
+//   jwtVerification,
+//   async (req, res) => {
+//     try {
+//       const complains = req.body.complains;
+//     } catch (e) {
+//       return res.status.send("Internal Server Error");
+//     }
+//   }
+// );
 
 module.exports = router;
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI2MTE4MGU4NDgyOWQxMjdmNDZmMzA3In0sImlhdCI6MTY1MDUzMDMxOCwiZXhwIjoxNjUwODkwMzE4fQ.VtvxGz9qcyz5EOoDAocdOeuQ5-A-z-XrtE1DYozqnXQ

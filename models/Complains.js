@@ -15,6 +15,14 @@ const ComplainsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  resolved_by_user: {
+    type: Boolean,
+    default: false,
+  },
+  admin_can_delete: {
+    type: Boolean,
+    default: false,
+  },
   house_num: {
     type: String,
     required: true,

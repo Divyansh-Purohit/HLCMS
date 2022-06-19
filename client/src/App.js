@@ -1,4 +1,3 @@
-// "mongodburi": "mongodb+srv://Divyansh:Siddharth%401993@cluster0.vwqkn.mongodb.net/hlwracms2.0?retryWrites=true&w=majority",
 import "./App.css";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
