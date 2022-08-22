@@ -1,4 +1,6 @@
 import { Fragment, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -91,14 +93,18 @@ const AddNewEvent = (props) => {
                 </div>
                 <div className={classes.fields}>
                   <label htmlFor="date">Scheduled On</label>
-                  <input
+                  <DatePicker
+                    selected={new Date()}
+                    onChange={(date) => setDate(date)}
+                  />
+                  {/* <input
                     type={"text"}
                     required={true}
                     name="date"
                     value={date}
                     placeholder={"DD/MM/YYYY"}
                     onChange={dateChangeHandler}
-                  ></input>
+                  ></input> */}
                 </div>
               </div>
               <div className={classes.fields_bottom}>
