@@ -1,7 +1,11 @@
 # Title: AFS Halwara Online Management Portal 
 
+# Methodology:
+![111](https://user-images.githubusercontent.com/63841637/208420855-b7199d40-4193-4749-b1c1-27b338faa455.jpg)
+
+
 # Description:
-This is an online management portal for Air Force Station - Halwara, Punjab. This is an entire MERN Stack based project designed and developed from scratch, by me. To use it one must create an account on it. Here the users can opst announcements, inform about upcoming events, and raise issues bith by their usernames and anonymously. They can also file house related complains using this portal, without having to stand in long queues.
+This is an online management portal for Air Force Station - Halwara, Punjab. This is an entire MERN Stack based project designed and developed from scratch, by me. To use it one must create an account on it. Here the users can opst announcements, inform about upcoming events, and raise issues both by their usernames and anonymously. They can also file house related complains using this portal, without having to stand in long queues.
 The users get informed about other people activity in the portal through email.
 The input fields in this application comes with on the spot validation to provide best user experience!
 
@@ -20,7 +24,8 @@ https://dphlwra-afs.onrender.com
 ![6](https://user-images.githubusercontent.com/63841637/208241769-3fb40a69-0844-4f50-8aed-68a946897766.jpg)
 ![4](https://user-images.githubusercontent.com/63841637/208241713-2cbdfb7a-6f2d-4e80-a680-e4db764095b7.jpg)
 
-
-
 # Releases: 
 v1
+
+# Packages:
+No package published
